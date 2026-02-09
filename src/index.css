@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+
+
+html, body {
+  height: auto !important;
+  overflow-y: auto !important;
+  overflow-x: hidden;
+}
+
+#root {
+  height: auto !important;
+  overflow: visible !important;
+}
