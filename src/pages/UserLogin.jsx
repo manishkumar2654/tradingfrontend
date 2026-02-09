@@ -166,75 +166,77 @@ const UserLogin = () => {
         </div>
 
         {/* Content */}
-        <div className="relative h-full p-5 sm:p-8 lg:p-10 flex flex-col justify-end">
-          <div className="max-w-2xl">
-            <h1 className="text-3xl sm:text-5xl font-extrabold leading-tight tracking-tight text-white">
-              Trade smarter with a{" "}
-              <span className="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
-                modern terminal
-              </span>
-              .
-            </h1>
+      {/* Content */}
+<div className="relative h-full p-5 sm:p-8 lg:p-10 flex flex-col">
+  {/* ✅ Reserve space for top badges row (prevents overlap on mobile) */}
+  <div className="h-14 sm:h-16" />
 
-            <p className="mt-3 text-slate-200/85 text-sm sm:text-lg max-w-xl">
-              TradeSmart aapko markets track karne, trends analyze karne aur fast
-              decisions lene mein help karta hai — clean UI, strong UX, scalable layout.
-            </p>
+  {/* ✅ Actual content stays at bottom */}
+  <div className="mt-auto max-w-2xl">
+    <h1 className="text-[28px] sm:text-5xl font-extrabold leading-tight tracking-tight text-white">
+      Trade smarter with a{" "}
+      <span className="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
+        modern terminal
+      </span>
+      .
+    </h1>
 
-            {/* Chips */}
-            <div className="mt-5 flex flex-wrap gap-2">
-              {[
-                { tag: "📈", text: "Live Market Summary" },
-                { tag: "📊", text: "Advanced Charts" },
-                { tag: "💱", text: "Equity • Forex • Futures" },
-                { tag: "🔐", text: "Secure SmartAPI login" },
-              ].map((b, idx) => (
-                <div
-                  key={idx}
-                  className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs sm:text-sm bg-slate-950/35 border border-slate-800/80 backdrop-blur hover:border-sky-400/35 hover:bg-slate-900/40 transition"
-                >
-                  <span className="text-sm">{b.tag}</span>
-                  <span className="text-slate-200/90">{b.text}</span>
-                </div>
-              ))}
-            </div>
+    <p className="mt-3 text-slate-200/85 text-sm sm:text-lg max-w-xl">
+      TradeSmart aapko markets track karne, trends analyze karne aur fast
+      decisions lene mein help karta hai — clean UI, strong UX, scalable layout.
+    </p>
 
-            {/* Stats */}
-            <div className="mt-6 grid grid-cols-3 gap-3 max-w-lg">
-              {[
-                { a: "1.6Cr+", b: "Traders community" },
-                { a: "0ms", b: "UI Lag feel" },
-                { a: "24×7", b: "Market access" },
-              ].map((x, i) => (
-                <div
-                  key={i}
-                  className="rounded-xl border border-slate-800/80 bg-slate-950/35 backdrop-blur px-3 py-3 hover:border-sky-400/25 transition"
-                >
-                  <div className="text-lg sm:text-xl font-bold text-white">
-                    {x.a}
-                  </div>
-                  <div className="text-[11px] sm:text-xs text-slate-300/80">
-                    {x.b}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* CTA */}
-            <div className="mt-6 flex gap-3 flex-wrap">
-              <button className={btnPrimary} type="button">
-                Explore Markets
-              </button>
-              <button className={btnGhost} type="button">
-                View Features
-              </button>
-            </div>
-
-            <p className="mt-4 text-[11px] text-slate-300/70">
-              * Demo UI — no real trading performed.
-            </p>
-          </div>
+    {/* Chips */}
+    <div className="mt-5 flex flex-wrap gap-2">
+      {[
+        { tag: "📈", text: "Live Market Summary" },
+        { tag: "📊", text: "Advanced Charts" },
+        { tag: "💱", text: "Equity • Forex • Futures" },
+        { tag: "🔐", text: "Secure SmartAPI login" },
+      ].map((b, idx) => (
+        <div
+          key={idx}
+          className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs sm:text-sm bg-slate-950/35 border border-slate-800/80 backdrop-blur hover:border-sky-400/35 hover:bg-slate-900/40 transition"
+        >
+          <span className="text-sm">{b.tag}</span>
+          <span className="text-slate-200/90">{b.text}</span>
         </div>
+      ))}
+    </div>
+
+    {/* Stats */}
+    <div className="mt-6 grid grid-cols-3 gap-3 max-w-lg">
+      {[
+        { a: "1.6Cr+", b: "Traders community" },
+        { a: "0ms", b: "UI Lag feel" },
+        { a: "24×7", b: "Market access" },
+      ].map((x, i) => (
+        <div
+          key={i}
+          className="rounded-xl border border-slate-800/80 bg-slate-950/35 backdrop-blur px-3 py-3 hover:border-sky-400/25 transition"
+        >
+          <div className="text-lg sm:text-xl font-bold text-white">{x.a}</div>
+          <div className="text-[11px] sm:text-xs text-slate-300/80">{x.b}</div>
+        </div>
+      ))}
+    </div>
+
+    {/* CTA */}
+    <div className="mt-6 flex gap-3 flex-wrap">
+      <button className={btnPrimary} type="button">
+        Explore Markets
+      </button>
+      <button className={btnGhost} type="button">
+        View Features
+      </button>
+    </div>
+
+    <p className="mt-4 text-[11px] text-slate-300/70">
+      * Demo UI — no real trading performed.
+    </p>
+  </div>
+</div>
+
       </div>
     </Reveal>
 
