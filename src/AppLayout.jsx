@@ -13,7 +13,7 @@ const AppLayout = ({ children }) => {
       <Navbar topOffset={TICKER_H} />
 
       {/* total push = ticker + navbar */}
-      <main className="flex-1 pt-[102px]">{children}</main>
+      <main className="flex-1 pt-[0px]">{children}</main>
 
       <Footer />
     </div>

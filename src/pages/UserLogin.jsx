@@ -114,237 +114,242 @@ const UserLogin = () => {
 
 
       {/* ===================== HERO + LOGIN ===================== */}
-<section className="px-3 sm:px-6 pt-0 pb-4">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 min-h-[80vh]">
-          {/* LEFT HERO */}
-          <Reveal
-            refs={revealRefs}
-            idx={r++}
-            className="lg:col-span-7"
-            style={{ "--d": "0ms" }}
+{/* ===================== HERO + LOGIN (FULL SECTION) ===================== */}
+<section className="px-3 sm:px-6 py-6">
+  {/* ✅ items-stretch se left/right equal height */}
+  <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 lg:min-h-[80vh] items-stretch">
+
+    {/* ================= LEFT : HERO ================= */}
+    <Reveal
+      refs={revealRefs}
+      idx={r++}
+      className="lg:col-span-7 h-full"
+      style={{ "--d": "0ms" }}
+    >
+      <div
+        className={`relative h-full min-h-[360px] sm:min-h-[440px] lg:min-h-[560px]
+        overflow-hidden rounded-2xl border border-slate-800 bg-[#0f172a]
+        ${hoverCard} ts-parallax`}
+      >
+        {/* Video */}
+        <video
+          ref={videoRef}
+          className="absolute inset-0 w-full h-full object-cover scale-[1.04] transition-transform duration-700"
+          playsInline
+          autoPlay
+          loop
+          muted={isMuted}
+        >
+          <source src={tv3} type="video/mp4" />
+        </video>
+
+        {/* Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0b1220]/92 via-[#0b1220]/40 to-[#0b1220]/92" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(56,189,248,0.18),transparent_42%),radial-gradient(circle_at_70%_35%,rgba(167,139,250,0.16),transparent_45%),radial-gradient(circle_at_40%_80%,rgba(34,197,94,0.12),transparent_45%)]" />
+
+        {/* Top badges */}
+        <div className="absolute left-4 right-4 top-4 sm:left-6 sm:right-6 sm:top-6 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2 rounded-full border border-slate-800/80 bg-slate-950/35 backdrop-blur px-3 py-1.5">
+            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-xs text-slate-200/90">
+              Market-ready UI • Pro motion
+            </span>
+          </div>
+
+          <button
+            onClick={() => setIsMuted((m) => !m)}
+            className="ts-btn px-3 py-1.5 rounded-full border border-slate-800/80 bg-slate-950/35 backdrop-blur text-xs text-slate-200 hover:bg-slate-900/50 hover:border-sky-400/30 transition"
+            type="button"
           >
-            <div
-              className={`relative h-72 sm:h-96 lg:h-full overflow-hidden rounded-2xl border border-slate-800 bg-[#0f172a] ${hoverCard} ts-parallax`}
-            >
-              <video
-                ref={videoRef}
-                className="absolute inset-0 w-full h-full object-cover scale-[1.04] transition-transform duration-700"
-                playsInline
-                autoPlay
-                loop
-                muted={isMuted}
-              >
-                <source src={tv3} type="video/mp4" />
-              </video>
+            Go Trade
+          </button>
+        </div>
 
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0b1220]/92 via-[#0b1220]/35 to-[#0b1220]/88" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(56,189,248,0.18),transparent_42%),radial-gradient(circle_at_70%_35%,rgba(167,139,250,0.18),transparent_45%),radial-gradient(circle_at_40%_80%,rgba(34,197,94,0.12),transparent_45%)]" />
+        {/* Content */}
+        <div className="relative h-full p-5 sm:p-8 lg:p-10 flex flex-col justify-end">
+          <div className="max-w-2xl">
+            <h1 className="text-3xl sm:text-5xl font-extrabold leading-tight tracking-tight text-white">
+              Trade smarter with a{" "}
+              <span className="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
+                modern terminal
+              </span>
+              .
+            </h1>
 
-              <div className="absolute left-4 right-4 top-4 sm:left-6 sm:right-6 sm:top-6 flex items-center justify-between gap-3">
-                <div className="flex items-center gap-2 rounded-full border border-slate-800/80 bg-slate-950/35 backdrop-blur px-3 py-1.5">
-                  <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="text-xs text-slate-200/90">
-                    Market-ready UI • Pro motion
-                  </span>
-                </div>
+            <p className="mt-3 text-slate-200/85 text-sm sm:text-lg max-w-xl">
+              TradeSmart aapko markets track karne, trends analyze karne aur fast
+              decisions lene mein help karta hai — clean UI, strong UX, scalable layout.
+            </p>
 
-                <button
-                  onClick={() => setIsMuted((m) => !m)}
-                  className="ts-btn px-3 py-1.5 rounded-full border border-slate-800/80 bg-slate-950/35 backdrop-blur text-xs text-slate-200 hover:bg-slate-900/50 hover:border-sky-400/30 transition"
-                  type="button"
+            {/* Chips */}
+            <div className="mt-5 flex flex-wrap gap-2">
+              {[
+                { tag: "📈", text: "Live Market Summary" },
+                { tag: "📊", text: "Advanced Charts" },
+                { tag: "💱", text: "Equity • Forex • Futures" },
+                { tag: "🔐", text: "Secure SmartAPI login" },
+              ].map((b, idx) => (
+                <div
+                  key={idx}
+                  className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs sm:text-sm bg-slate-950/35 border border-slate-800/80 backdrop-blur hover:border-sky-400/35 hover:bg-slate-900/40 transition"
                 >
-                  Go Trade
+                  <span className="text-sm">{b.tag}</span>
+                  <span className="text-slate-200/90">{b.text}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Stats */}
+            <div className="mt-6 grid grid-cols-3 gap-3 max-w-lg">
+              {[
+                { a: "1.6Cr+", b: "Traders community" },
+                { a: "0ms", b: "UI Lag feel" },
+                { a: "24×7", b: "Market access" },
+              ].map((x, i) => (
+                <div
+                  key={i}
+                  className="rounded-xl border border-slate-800/80 bg-slate-950/35 backdrop-blur px-3 py-3 hover:border-sky-400/25 transition"
+                >
+                  <div className="text-lg sm:text-xl font-bold text-white">
+                    {x.a}
+                  </div>
+                  <div className="text-[11px] sm:text-xs text-slate-300/80">
+                    {x.b}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <div className="mt-6 flex gap-3 flex-wrap">
+              <button className={btnPrimary} type="button">
+                Explore Markets
+              </button>
+              <button className={btnGhost} type="button">
+                View Features
+              </button>
+            </div>
+
+            <p className="mt-4 text-[11px] text-slate-300/70">
+              * Demo UI — no real trading performed.
+            </p>
+          </div>
+        </div>
+      </div>
+    </Reveal>
+
+    {/* ================= RIGHT : LOGIN ================= */}
+    <Reveal
+      refs={revealRefs}
+      idx={r++}
+      className="lg:col-span-5 h-full flex"
+      style={{ "--d": "80ms" }}
+    >
+      {/* ✅ full height wrapper */}
+      <div className="w-full h-full">
+        {/* ✅ card full height + sticky-ish feel on desktop */}
+        <div
+          className={`relative h-full rounded-2xl border border-slate-800 bg-gradient-to-b from-slate-900/80 to-slate-950 p-6 shadow-2xl ${hoverCard}`}
+        >
+          <div className="pointer-events-none absolute -inset-1 rounded-2xl bg-gradient-to-r from-sky-400/10 via-blue-500/5 to-violet-500/10 blur-2xl" />
+
+          {/* ✅ make layout fill height */}
+          <div className="relative h-full flex flex-col">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <h4 className="font-bold text-2xl text-white">Secure Login</h4>
+                <p className="text-slate-400 text-sm mt-1">
+                  Angel One SmartAPI • Token based authentication
+                </p>
+              </div>
+              <div className="rounded-xl border border-slate-800 bg-slate-950/40 px-3 py-2">
+                <div className="text-xs text-slate-300/80">Status</div>
+                <div className="text-xs font-semibold text-emerald-400">
+                  Online
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-5 grid grid-cols-3 gap-2">
+              {[
+                { t: "Encrypted", d: "TLS" },
+                { t: "Fast", d: "OTP" },
+                { t: "Safe", d: "No store" },
+              ].map((x, i) => (
+                <div
+                  key={i}
+                  className="rounded-xl border border-slate-800 bg-slate-950/35 px-3 py-2 text-center hover:border-sky-400/25 transition"
+                >
+                  <div className="text-xs font-semibold text-slate-200">
+                    {x.t}
+                  </div>
+                  <div className="text-[11px] text-slate-400">{x.d}</div>
+                </div>
+              ))}
+            </div>
+
+            <form onSubmit={handleSubmit} className="mt-5 space-y-4">
+              {[
+                { label: "Client Code", type: "text", placeholder: "Enter Client Code" },
+                { label: "PIN", type: "password", placeholder: "Enter PIN" },
+                { label: "TOTP", type: "text", placeholder: "Enter TOTP" },
+              ].map((f, idx) => (
+                <div key={idx}>
+                  <label className="block text-xs text-slate-300/80 mb-2">
+                    {f.label}
+                  </label>
+                  <input
+                    aria-label={f.label}
+                    type={f.type}
+                    placeholder={f.placeholder}
+                    className="w-full h-12 rounded-xl bg-[#0b1220] border border-slate-800 px-4 text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-400 hover:border-sky-400/25 transition"
+                  />
+                </div>
+              ))}
+
+              <button type="submit" className={`${btnPrimary} w-full`}>
+                Connect Trading Account
+              </button>
+
+              <div className="flex items-center justify-between text-xs text-slate-400">
+                <button
+                  type="button"
+                  className="hover:text-slate-200 transition"
+                  onClick={() => alert("Demo: Forgot PIN flow")}
+                >
+                  Forgot PIN?
+                </button>
+                <button
+                  type="button"
+                  className="hover:text-slate-200 transition"
+                  onClick={() => alert("Demo: Help & support")}
+                >
+                  Need help?
                 </button>
               </div>
+            </form>
 
-              <div className="relative h-full p-4 sm:p-8 lg:p-10 flex flex-col justify-end">
-                <div className="max-w-2xl">
-                  <h1 className="text-3xl sm:text-5xl font-extrabold leading-tight tracking-tight">
-                    Trade smarter with a{" "}
-                    <span className="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
-                      modern terminal
-                    </span>
-                    .
-                  </h1>
-
-                  <p className="mt-3 text-slate-200/85 text-sm sm:text-lg max-w-xl">
-                    TradeSmart aapko markets track karne, trends analyze karne
-                    aur fast decisions lene mein help karta hai — clean UI,
-                    strong UX, scalable layout.
-                  </p>
-
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {[
-                      { tag: "📈", text: "Live Market Summary" },
-                      { tag: "📊", text: "Advanced Charts" },
-                      { tag: "💱", text: "Equity • Forex • Futures" },
-                      { tag: "🔐", text: "Secure SmartAPI login" },
-                    ].map((b, idx) => (
-                      <div
-                        key={idx}
-                        className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs sm:text-sm bg-slate-950/35 border border-slate-800/80 backdrop-blur hover:border-sky-400/35 hover:bg-slate-900/40 transition"
-                      >
-                        <span className="text-sm">{b.tag}</span>
-                        <span className="text-slate-200/90">{b.text}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="mt-6 grid grid-cols-3 gap-3 max-w-lg">
-                    {[
-                      { a: "1.6Cr+", b: "Traders community" },
-                      { a: "0ms", b: "UI Lag feel" },
-                      { a: "24×7", b: "Market access" },
-                    ].map((x, i) => (
-                      <div
-                        key={i}
-                        className="rounded-xl border border-slate-800/80 bg-slate-950/35 backdrop-blur px-3 py-3 hover:border-sky-400/25 transition"
-                      >
-                        <div className="text-lg sm:text-xl font-bold text-white">
-                          {x.a}
-                        </div>
-                        <div className="text-[11px] sm:text-xs text-slate-300/80">
-                          {x.b}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="mt-6 flex gap-3 flex-wrap">
-                    <button className={btnPrimary} type="button">
-                      Explore Markets
-                    </button>
-                    <button className={btnGhost} type="button">
-                      View Features
-                    </button>
-                  </div>
-
-                  <p className="mt-4 text-[11px] text-slate-300/70">
-                    * Demo UI — no real trading performed.
-                  </p>
-                </div>
-              </div>
+            <div className="mt-5 rounded-xl border border-slate-800 bg-slate-950/35 px-4 py-3">
+              <p className="text-xs text-slate-300/80">
+                Tip: TOTP use karte time mobile time sync rakhiye.{" "}
+                <span className="text-sky-300">Better success rate.</span>
+              </p>
             </div>
-          </Reveal>
 
-          {/* RIGHT LOGIN */}
-          <Reveal
-            refs={revealRefs}
-            idx={r++}
-            className="lg:col-span-5 flex justify-center"
-            style={{ "--d": "80ms" }}
-          >
-            <div className="w-full max-w-md self-start lg:self-center">
-              <div
-                className={`relative rounded-2xl border border-slate-800 bg-gradient-to-b from-slate-900/80 to-slate-950 p-6 shadow-2xl ${hoverCard} ts-float`}
-              >
-                <div className="pointer-events-none absolute -inset-1 rounded-2xl bg-gradient-to-r from-sky-400/10 via-blue-500/5 to-violet-500/10 blur-2xl" />
-
-                <div className="relative">
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <h4 className="font-bold text-2xl text-white">
-                        Secure Login
-                      </h4>
-                      <p className="text-slate-400 text-sm mt-1">
-                        Angel One SmartAPI • Token based authentication
-                      </p>
-                    </div>
-                    <div className="rounded-xl border border-slate-800 bg-slate-950/40 px-3 py-2">
-                      <div className="text-xs text-slate-300/80">Status</div>
-                      <div className="text-xs font-semibold text-emerald-400">
-                        Online
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-5 grid grid-cols-3 gap-2">
-                    {[
-                      { t: "Encrypted", d: "TLS" },
-                      { t: "Fast", d: "OTP" },
-                      { t: "Safe", d: "No store" },
-                    ].map((x, i) => (
-                      <div
-                        key={i}
-                        className="rounded-xl border border-slate-800 bg-slate-950/35 px-3 py-2 text-center hover:border-sky-400/25 transition"
-                      >
-                        <div className="text-xs font-semibold text-slate-200">
-                          {x.t}
-                        </div>
-                        <div className="text-[11px] text-slate-400">{x.d}</div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <form onSubmit={handleSubmit} className="mt-5 space-y-4">
-                    {[
-                      {
-                        label: "Client Code",
-                        type: "text",
-                        placeholder: "Enter Client Code",
-                      },
-                      {
-                        label: "PIN",
-                        type: "password",
-                        placeholder: "Enter PIN",
-                      },
-                      {
-                        label: "TOTP",
-                        type: "text",
-                        placeholder: "Enter TOTP",
-                      },
-                    ].map((f, idx) => (
-                      <div key={idx}>
-                        <label className="block text-xs text-slate-300/80 mb-2">
-                          {f.label}
-                        </label>
-                        <input
-                          aria-label={f.label}
-                          type={f.type}
-                          placeholder={f.placeholder}
-                          className="w-full h-12 rounded-xl bg-[#0b1220] border border-slate-800 px-4 text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-400 hover:border-sky-400/25 transition"
-                        />
-                      </div>
-                    ))}
-
-                    <button type="submit" className={`${btnPrimary} w-full`}>
-                      Connect Trading Account
-                    </button>
-
-                    <div className="flex items-center justify-between text-xs text-slate-400">
-                      <button
-                        type="button"
-                        className="hover:text-slate-200 transition"
-                        onClick={() => alert("Demo: Forgot PIN flow")}
-                      >
-                        Forgot PIN?
-                      </button>
-                      <button
-                        type="button"
-                        className="hover:text-slate-200 transition"
-                        onClick={() => alert("Demo: Help & support")}
-                      >
-                        Need help?
-                      </button>
-                    </div>
-                  </form>
-
-                  <div className="mt-5 rounded-xl border border-slate-800 bg-slate-950/35 px-4 py-3">
-                    <p className="text-xs text-slate-300/80">
-                      Tip: TOTP use karte time mobile time sync rakhiye.{" "}
-                      <span className="text-sky-300">Better success rate.</span>
-                    </p>
-                  </div>
-
-                  <p className="text-center text-slate-400 text-xs mt-4">
-                    Demo UI • No real trading
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Reveal>
+            {/* ✅ footer always bottom */}
+            <p className="text-center text-slate-400 text-xs mt-auto pt-4">
+              Demo UI • No real trading
+            </p>
+          </div>
         </div>
-      </section>
+      </div>
+    </Reveal>
+
+  </div>
+</section>
+
+
+
 
       {/* ===================== CENTER TEXT ===================== */}
       <Reveal refs={revealRefs} idx={r++} style={{ "--d": "60ms" }}>
