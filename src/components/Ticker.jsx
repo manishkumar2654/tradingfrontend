@@ -18,7 +18,8 @@ const Ticker = () => {
     <section className="fixed top-0 left-0 right-0 z-[90]">
       <div className="w-full h-[38px] border-y border-slate-800 bg-[#0b1220] overflow-hidden">
         <div className="h-full flex items-center">
-          <div className="ticker-track flex items-center gap-10 whitespace-nowrap px-6">
+          {/* ✅ IMPORTANT: inline-flex + shrink-0 + min-w-max */}
+          <div className="ticker-track inline-flex items-center gap-10 whitespace-nowrap px-6 shrink-0 min-w-max">
             {items.map((t, i) => {
               const isPos = t.chg.trim().startsWith("+");
               return (
@@ -39,17 +40,24 @@ const Ticker = () => {
         </div>
       </div>
 
-      {/* animation */}
       <style>{`
         .ticker-track{
+          width: max-content;        /* ✅ mobile shrink fix */
           animation: tickerMove 14s linear infinite;
           will-change: transform;
+          transform: translate3d(0,0,0); /* ✅ iOS smooth */
         }
-        .ticker-track:hover{ animation-play-state: paused; }
+
+        /* Mobile pe hover stuck feel na ho */
+        @media (hover: none){
+          .ticker-track:hover{ animation-play-state: running; }
+        }
+
         @keyframes tickerMove{
-          0%{ transform: translateX(0); }
-          100%{ transform: translateX(-50%); }
+          0%{ transform: translate3d(0,0,0); }
+          100%{ transform: translate3d(-50%,0,0); }
         }
+
         @media (prefers-reduced-motion: reduce){
           .ticker-track{ animation: none !important; }
         }
