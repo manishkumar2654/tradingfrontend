@@ -8,58 +8,55 @@ const TICKER = [
   { icon: "🟣", name: "SOL", price: "$87.5", chg: "+9.80%" },
   { icon: "🔻", name: "TRX", price: "$0.276", chg: "+2.33%" },
   { icon: "🐶", name: "DOGE", price: "$0.098", chg: "+7.30%" },
-  { icon: "🟦", name: "FIGR_HELOC", price: "$1.028", chg: "-0.20%" },
 ];
 
 const Ticker = () => {
   const items = useMemo(() => [...TICKER, ...TICKER], []);
 
   return (
-    <section className="fixed top-0 left-0 right-0 z-[90]">
-      <div className="w-full h-[38px] border-y border-slate-800 bg-[#0b1220] overflow-hidden">
-        <div className="h-full flex items-center">
-          {/* ✅ IMPORTANT: inline-flex + shrink-0 + min-w-max */}
-          <div className="ticker-track inline-flex items-center gap-10 whitespace-nowrap px-6 shrink-0 min-w-max">
-            {items.map((t, i) => {
-              const isPos = t.chg.trim().startsWith("+");
-              return (
-                <div
-                  key={i}
-                  className="flex items-center gap-2 text-[13px] opacity-90 hover:opacity-100 transition"
-                >
-                  <span className="text-base leading-none">{t.icon}</span>
-                  <span className="font-semibold text-slate-100">{t.name}</span>
-                  <span className="text-slate-200/80">{t.price}</span>
-                  <span className={isPos ? "text-emerald-400" : "text-rose-400"}>
-                    {t.chg}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
+    <section className="fixed top-0 left-0 w-full z-[90] bg-[#0b1220] border-b border-slate-800">
+      <div className="overflow-hidden h-[38px]">
+        <div className="ticker-track flex items-center gap-10 px-6">
+          {items.map((t, i) => {
+            const isPos = t.chg.startsWith("+");
+            return (
+              <div
+                key={i}
+                className="flex items-center gap-2 text-[13px] whitespace-nowrap"
+              >
+                <span>{t.icon}</span>
+                <span className="font-semibold text-slate-100">{t.name}</span>
+                <span className="text-slate-300">{t.price}</span>
+                <span className={isPos ? "text-green-400" : "text-red-400"}>
+                  {t.chg}
+                </span>
+              </div>
+            );
+          })}
         </div>
       </div>
 
       <style>{`
-        .ticker-track{
-          width: max-content;        /* ✅ mobile shrink fix */
-          animation: tickerMove 14s linear infinite;
-          will-change: transform;
-          transform: translate3d(0,0,0); /* ✅ iOS smooth */
+        .ticker-track {
+          width: max-content;
+          animation: ticker 16s linear infinite;
+          transform: translate3d(0,0,0);
         }
 
-        /* Mobile pe hover stuck feel na ho */
-        @media (hover: none){
-          .ticker-track:hover{ animation-play-state: running; }
+        @keyframes ticker {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-1200px); }
         }
 
-        @keyframes tickerMove{
-          0%{ transform: translate3d(0,0,0); }
-          100%{ transform: translate3d(-50%,0,0); }
+        /* Mobile Safari fix */
+        @supports (-webkit-touch-callout: none) {
+          .ticker-track {
+            animation-duration: 18s;
+          }
         }
 
-        @media (prefers-reduced-motion: reduce){
-          .ticker-track{ animation: none !important; }
+        @media (prefers-reduced-motion: reduce) {
+          .ticker-track { animation: none !important; }
         }
       `}</style>
     </section>
