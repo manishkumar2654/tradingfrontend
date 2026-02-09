@@ -1,18 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import Navbar from "../components/Navbar";
 import tv3 from "../assets/tv3.mp4";
 
-/* ===================== TICKER DATA ===================== */
-const TICKER = [
-  { icon: "💲", name: "USD", price: "$1", chg: "+0.07%" },
-  { icon: "❌", name: "XRP", price: "$1.46", chg: "+11.97%" },
-  { icon: "🟡", name: "BNB", price: "$649.82", chg: "+3.56%" },
-  { icon: "🔵", name: "USDC", price: "$1", chg: "-0.00%" },
-  { icon: "🟣", name: "SOL", price: "$87.5", chg: "+9.80%" },
-  { icon: "🔻", name: "TRX", price: "$0.276", chg: "+2.33%" },
-  { icon: "🐶", name: "DOGE", price: "$0.098", chg: "+7.30%" },
-  { icon: "🟦", name: "FIGR_HELOC", price: "$1.028", chg: "-0.20%" },
-];
 
 /* ===================== REVEAL ON SCROLL ===================== */
 const useRevealOnScroll = () => {
@@ -53,7 +41,6 @@ const UserLogin = () => {
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef(null);
 
-  const items = useMemo(() => [...TICKER, ...TICKER], []);
 
   const card =
     "rounded-2xl border border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950";
@@ -120,43 +107,14 @@ const UserLogin = () => {
       ref={rootRef}
       className="min-h-screen bg-[#0b1220] text-slate-100 ts-stage "
     >
-      {/* ===================== FIXED TICKER ===================== */}
 
-      <section className="sticky top-0 z-[80]">
-        <div className="w-full h-[38px] border-y border-slate-800 bg-[#0b1220] overflow-hidden">
-          <div className="h-full flex items-center">
-            <div className="ticker-track flex items-center gap-10 whitespace-nowrap px-6">
-              {items.map((t, i) => {
-                const isPos = t.chg.trim().startsWith("+");
-                return (
-                  <div
-                    key={i}
-                    className="flex items-center gap-2 text-[13px] opacity-90 hover:opacity-100 transition"
-                  >
-                    <span className="text-base leading-none">{t.icon}</span>
-                    <span className="font-semibold text-slate-100">
-                      {t.name}
-                    </span>
-                    <span className="text-slate-200/80">{t.price}</span>
-                    <span
-                      className={isPos ? "text-emerald-400" : "text-rose-400"}
-                    >
-                      {t.chg}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Navbar below ticker */}
 
-      <Navbar />
+
+
 
       {/* ===================== HERO + LOGIN ===================== */}
-      <section className="px-3 sm:px-6 py-6">
+<section className="px-3 sm:px-6 pt-0 pb-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 min-h-[80vh]">
           {/* LEFT HERO */}
           <Reveal
@@ -195,7 +153,7 @@ const UserLogin = () => {
                   className="ts-btn px-3 py-1.5 rounded-full border border-slate-800/80 bg-slate-950/35 backdrop-blur text-xs text-slate-200 hover:bg-slate-900/50 hover:border-sky-400/30 transition"
                   type="button"
                 >
-                  {isMuted ? "🔈 Unmute" : "🔊 Mute"}
+                  Go Trade
                 </button>
               </div>
 
@@ -745,9 +703,15 @@ const UserLogin = () => {
         </section>
       </Reveal>
 
+
+
+
+
+      
+
       {/* ======================= FX BLUE ======================= */}
       <Reveal refs={revealRefs} idx={r++} style={{ "--d": "80ms" }}>
-        <section className="w-full bg-slate-950 py-14 px-4">
+        <section className="w-full  py-14 px-4">
           <div className="max-w-7xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">
               FX Blue Expert Advisors
@@ -794,7 +758,7 @@ const UserLogin = () => {
 
       {/* ======================= MARKET SNAPSHOT ======================= */}
       <Reveal refs={revealRefs} idx={r++} style={{ "--d": "60ms" }}>
-        <section className="w-full bg-slate-950 px-4 sm:px-6 py-12">
+        <section className="w-full  px-4 sm:px-6 py-12">
           <div className="max-w-7xl mx-auto">
             <div className="mb-8">
               <h2 className="text-2xl sm:text-3xl font-bold text-white">
@@ -841,9 +805,9 @@ const UserLogin = () => {
         </section>
       </Reveal>
 
-      {/* ======================= ECONOMIC CALENDAR ======================= */}
+      {/* ======================= ECONOMIC CALENDAR ======================isko krna hai  = */}
       <Reveal refs={revealRefs} idx={r++} style={{ "--d": "70ms" }}>
-        <section className="w-full bg-slate-950 px-4 sm:px-6 py-12">
+        <section className="w-full  px-4 sm:px-6 py-12">
           <div className="max-w-7xl mx-auto">
             <div className="mb-8">
               <h2 className="text-2xl sm:text-3xl font-bold text-white">
@@ -928,7 +892,7 @@ const UserLogin = () => {
 
       {/* ======================= FUTURES MARKET ======================= */}
       <Reveal refs={revealRefs} idx={r++} style={{ "--d": "70ms" }}>
-        <section className="w-full bg-slate-950 px-4 sm:px-6 py-12">
+        <section className="w-full  px-4 sm:px-6 py-12">
           <div className="max-w-7xl mx-auto">
             <div className="mb-8">
               <h2 className="text-2xl sm:text-3xl font-bold text-white">
@@ -1056,7 +1020,7 @@ const UserLogin = () => {
 
       {/* ======================= FOREX PERFORMANCE ======================= */}
       <Reveal refs={revealRefs} idx={r++} style={{ "--d": "70ms" }}>
-        <section className="w-full bg-slate-950 px-4 sm:px-6 py-12">
+        <section className="w-full  px-4 sm:px-6 py-12">
           <div className="max-w-7xl mx-auto">
             <div className="mb-8">
               <h2 className="text-2xl sm:text-3xl font-bold text-white">
@@ -1139,7 +1103,7 @@ const UserLogin = () => {
 
       {/* ======================= FULLY EQUIPPED ======================= */}
       <Reveal refs={revealRefs} idx={r++} style={{ "--d": "80ms" }}>
-        <section className="w-full bg-slate-950 px-4 sm:px-6 py-16">
+        <section className="w-full  px-4 sm:px-6 py-16">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               <div>
@@ -1199,7 +1163,7 @@ const UserLogin = () => {
 
       {/* ======================= INDIAN STOCKS + TRENDS ======================= */}
       <Reveal refs={revealRefs} idx={r++} style={{ "--d": "80ms" }}>
-        <section className="w-full bg-slate-950 px-4 sm:px-6 py-14">
+        <section className="w-full  px-4 sm:px-6 py-14">
           <div className="max-w-7xl mx-auto">
             <div className="mb-8">
               <h2 className="text-2xl sm:text-3xl font-bold text-white">
@@ -1283,7 +1247,7 @@ const UserLogin = () => {
 
       {/* ======================= INTERESTED? ======================= */}
       <Reveal refs={revealRefs} idx={r++} style={{ "--d": "70ms" }}>
-        <section className="w-full bg-slate-950 px-4 sm:px-6 py-16">
+        <section className="w-full  px-4 sm:px-6 py-16">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-bold text-white">
@@ -1333,7 +1297,7 @@ const UserLogin = () => {
 
       {/* ======================= OUR MARKET, YOUR CALL ======================= */}
       <Reveal refs={revealRefs} idx={r++} style={{ "--d": "80ms" }}>
-        <section className="w-full bg-[#0b1220] py-20 px-4">
+        <section className="w-full  py-20 px-4">
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
@@ -1397,7 +1361,7 @@ const UserLogin = () => {
 
       {/* ======================= OWN EXPERIENCE ======================= */}
       <Reveal refs={revealRefs} idx={r++} style={{ "--d": "80ms" }}>
-        <section className="w-full bg-[#0b1220] py-20 px-4">
+        <section className="w-full  py-20 px-4">
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
             <div className="relative">
               <div className={`${card} ${hoverCard} p-8 shadow-xl`}>
@@ -1466,7 +1430,7 @@ const UserLogin = () => {
 
       {/* ======================= PRICING ======================= */}
       <Reveal refs={revealRefs} idx={r++} style={{ "--d": "90ms" }}>
-        <section className="w-full bg-[#0b1220] py-20 px-4">
+        <section className="w-full  py-20 px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-4xl md:text-5xl font-bold text-white">
@@ -1553,7 +1517,7 @@ const UserLogin = () => {
 
       {/* ======================= 3 STEPS ======================= */}
       <Reveal refs={revealRefs} idx={r++} style={{ "--d": "90ms" }}>
-        <section className="w-full bg-[#0b1220] py-20 px-4">
+        <section className="w-full  py-20 px-4">
           <div className="max-w-7xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Open Your Account in{" "}
@@ -1609,7 +1573,7 @@ const UserLogin = () => {
 
       {/* ======================= TESTIMONIALS ======================= */}
       <Reveal refs={revealRefs} idx={r++} style={{ "--d": "90ms" }}>
-        <section className="w-full bg-[#0b1220] py-20 px-4">
+        <section className="w-full  py-20 px-4">
           <div className="max-w-7xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Loved by <span className="text-pink-500">Traders Worldwide</span>
@@ -1670,7 +1634,7 @@ const UserLogin = () => {
 
       {/* ======================= FAQs ======================= */}
       <Reveal refs={revealRefs} idx={r++} style={{ "--d": "70ms" }}>
-        <section className="w-full bg-[#0b1220] py-20 px-4">
+        <section className="w-full  py-20 px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-2">
@@ -1729,7 +1693,7 @@ const UserLogin = () => {
 
       {/* ======================= UNIQUE TOOLS ======================= */}
       <Reveal refs={revealRefs} idx={r++} style={{ "--d": "80ms" }}>
-        <section className="w-full bg-[#0b1220] py-20 px-4">
+        <section className="w-full  py-20 px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-2">
@@ -1779,6 +1743,13 @@ const UserLogin = () => {
         </section>
       </Reveal>
 
+
+
+
+
+
+
+
       {/* ===================== FOOTER ===================== */}
       <footer className="text-center text-slate-400 py-8 border-t border-slate-800">
         © 2026 TradeSmart • Demo Trading Platform
@@ -1827,16 +1798,7 @@ const UserLogin = () => {
   mask-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,.75), transparent 70%);
 }
 
-/* ===================== TICKER ===================== */
-.ticker-track{
-  animation: tickerMove 14s linear infinite;
-  will-change: transform;
-}
-.ticker-track:hover{ animation-play-state: paused; }
-@keyframes tickerMove{
-  0%{ transform: translateX(0); }
-  100%{ transform: translateX(-50%); }
-}
+
 
 /* ===================== REVEAL ===================== */
 .reveal{
@@ -1954,9 +1916,6 @@ const UserLogin = () => {
 @keyframes floaty{ 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-10px); } }
 .ts-float{ animation: floaty 5s ease-in-out infinite; }
 
-/* reduce motion */
-@media (prefers-reduced-motion: reduce){
-  .ticker-track, .reveal, .ts-card, .ts-btn, .ts-float{ animation: none !important; transition: none !important; }
 }
       `}</style>
     </div>
