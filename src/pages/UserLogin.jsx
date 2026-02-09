@@ -763,6 +763,8 @@ const UserLogin = () => {
         </section>
       </Reveal>
 
+
+
       {/* ======================= MARKET SNAPSHOT ======================= */}
       <Reveal refs={revealRefs} idx={r++} style={{ "--d": "60ms" }}>
         <section className="w-full  px-4 sm:px-6 py-12">
