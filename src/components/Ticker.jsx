@@ -14,49 +14,52 @@ const Ticker = () => {
   const items = useMemo(() => [...TICKER, ...TICKER], []);
 
   return (
-    <section className="fixed top-0 left-0 w-full z-[90] bg-[#0b1220] border-b border-slate-800">
-      <div className="overflow-hidden h-[38px]">
-        <div className="ticker-track flex items-center gap-10 px-6">
-          {items.map((t, i) => {
-            const isPos = t.chg.startsWith("+");
-            return (
-              <div
-                key={i}
-                className="flex items-center gap-2 text-[13px] whitespace-nowrap"
-              >
-                <span>{t.icon}</span>
-                <span className="font-semibold text-slate-100">{t.name}</span>
-                <span className="text-slate-300">{t.price}</span>
-                <span className={isPos ? "text-green-400" : "text-red-400"}>
-                  {t.chg}
-                </span>
-              </div>
-            );
-          })}
+    <section className="sticky top-0 z-[90] bg-[#0b1220]">
+      <div className="h-[38px] overflow-hidden border-y border-slate-800">
+        <div className="ticker-track">
+          {items.map((t, i) => (
+            <span key={i} className="ticker-item">
+              <span>{t.icon}</span>
+              <b>{t.name}</b>
+              <span>{t.price}</span>
+              <span className={t.chg.startsWith("+") ? "pos" : "neg"}>
+                {t.chg}
+              </span>
+            </span>
+          ))}
         </div>
       </div>
 
       <style>{`
-        .ticker-track {
+        .ticker-track{
+          display: inline-flex;
+          align-items: center;
+          gap: 24px;
+          padding-left: 16px;
           width: max-content;
-          animation: ticker 16s linear infinite;
-          transform: translate3d(0,0,0);
+          animation: tickerMove 18s linear infinite;
         }
 
-        @keyframes ticker {
+        .ticker-item{
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 13px;
+          white-space: nowrap;
+          color: #cbd5f5;
+        }
+
+        .ticker-item b { color: #fff; font-weight: 600; }
+        .pos { color: #22c55e; }
+        .neg { color: #ef4444; }
+
+        @keyframes tickerMove {
           from { transform: translateX(0); }
-          to   { transform: translateX(-1200px); }
+          to   { transform: translateX(-1000px); } /* 🔥 pixel based */
         }
 
-        /* Mobile Safari fix */
-        @supports (-webkit-touch-callout: none) {
-          .ticker-track {
-            animation-duration: 18s;
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .ticker-track { animation: none !important; }
+        @media (prefers-reduced-motion: reduce){
+          .ticker-track{ animation: none }
         }
       `}</style>
     </section>
